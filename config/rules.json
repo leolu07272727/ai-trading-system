@@ -1,0 +1,84 @@
+{
+  "strategy_name": "Trend Join Long",
+  "direction": "long_only",
+  "trade_timeframe": "5m",
+  "universe_filters": {
+    "index": "S&P 500",
+    "min_price_usd": 3.0
+  },
+  "daily_filters": {
+    "D1_above_prior_day_high": true,
+    "D2_prior_close_above_sma200": true,
+    "D3_min_gap_pct_from_prior_close": 3.0
+  },
+  "intraday_filters": {
+    "I2_above_today_hod": true,
+    "I3_rvol_min": 2.0,
+    "I3_rvol_lookback_days": 14
+  },
+  "regime_filter": {
+    "enabled": true,
+    "symbol": "SPY",
+    "rule": "price_above_sma200"
+  },
+  "time_filter": {
+    "earliest_entry_et": "10:05",
+    "latest_entry_et": "15:30",
+    "force_close_et": "15:51"
+  },
+  "exit": {
+    "initial_stop_rule": "lod_minus_1pct",
+    "partial_profit_enabled": false,
+    "partial_profit_trigger_R": 0.75,
+    "partial_profit_fraction": 0.3333,
+    "breakeven_enabled": false,
+    "breakeven_trigger_R": 1.0,
+    "post_breakeven_trail": "swing_low_5m_2_2"
+  },
+  "risk": {
+    "comment": "唯一風控來源 — cycle.py/bot.py 直接讀這裡，.env 的風控參數已停用。",
+    "portfolio_value_usd": 50000,
+    "max_risk_per_trade_pct": 1.0,
+    "max_position_pct": 0.1,
+    "max_position_pct_amplified": 0.15,
+    "max_trade_size_usd": 7500,
+    "max_concurrent_positions": 3,
+    "max_positions_per_sector": 1,
+    "max_trades_per_day": 6,
+    "total_exposure_pct": 1.0,
+    "entry_slippage_cap_pct": 0.4
+  },
+  "pyramiding": {
+    "enabled": false,
+    "max_adds": 1,
+    "trigger_R": 1.0
+  },
+  "test_mode": {
+    "comment": "實驗模式（收樣本，2026-07 起）：D3 降 2%、跳過 I2（Tier-2 回測證實負貢獻）改要求價>今日開盤、RVOL 降 1.5。關掉 relax_filters 即整組回到正式配置。",
+    "relax_filters": true,
+    "relaxed_min_gap_pct": 2.0,
+    "relaxed_skip_I2": true,
+    "relaxed_require_above_open": true,
+    "relaxed_rvol_min": 1.5
+  },
+  "llm_overlay": {
+    "comment": "Claude 判官層（有界自主）：規則 pass 後、下單前的脈絡把關。可否決、縮倉、或在硬上限內小幅加碼並微調停損；數字一律在 code 端 clamp，無法超界。",
+    "enabled": true,
+    "mode": "live",
+    "notify_telegram": false,
+    "model": "claude-sonnet-4-6",
+    "escalate_model": "claude-opus-4-8",
+    "escalate_below_confidence": 0.5,
+    "min_confidence_to_approve": 0.55,
+    "min_size_mult": 0.5,
+    "max_amplify_size_mult": 1.5,
+    "stop_adjust_min": 0.5,
+    "stop_adjust_max": 1.5,
+    "max_reduced_size_mult": 0.75,
+    "min_reduced_size_mult": 0.25,
+    "earnings_blackout_days": 2,
+    "news_lookback_hours": 48,
+    "news_provider": "alpaca",
+    "daily_call_cap": 500
+  }
+}

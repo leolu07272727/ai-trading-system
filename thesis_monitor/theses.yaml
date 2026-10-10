@@ -1,0 +1,28 @@
+# Thesis Registry — Conviction Engine 的唯一輸出(BOT_V2_PROPOSAL.md §2.1)
+#
+# 鐵律:這個檔案只有人(Leo)能改,機器只讀。
+# 欄位全部必填,缺一個 evidence engine 會拒絕載入該條目。
+# status: active / paused / falsified / expired
+
+- id: ai-memory-2026
+  statement: "AI 記憶體(HBM/DRAM)需求被結構性低估,賣方分析師反應慢半拍"
+  # 施力點:純記憶體/儲存製造端。NVDA 已驗證是最爛施力點(全市場盯最緊),不列。
+  # 000660.KS(SK海力士)是 thesis 觀察標的但 IBKR 不好下單,只監控不執行。
+  tickers: [MU, WDC, STX]
+  watch_only: ["000660.KS"]
+  falsifiers:
+    - id: spot-price-down
+      desc: "DRAM/HBM 現貨價趨勢翻 down(循環見頂,優先於一切)"
+    - id: eps-momentum-dead
+      desc: "+1y EPS 估計 90 天上修動能歸零或翻負"
+    - id: capex-cut
+      desc: "hyperscaler capex 指引集體下修"
+  # ⚠ entry/add/trim/exit 四行是給人讀的規則描述;機器版實作在 executor.py 的
+  #    run_thesis()。改這裡的文字「不會」改變機器行為——要改規則,兩邊一起改。
+  entry: "state==EARLY 且距 52 週高 >10%"
+  add: "state∈{EARLY,MID} 且距高 >15% 且無 falsifier 進入 warning"
+  trim: "state==MID 且距 52 週高 <5%(共識追上+貼高=edge 吃完一半)"
+  exit: "state==LATE 或任一 falsifier 觸發"
+  max_weight: 0.25
+  review_by: 2026-12-31
+  status: active

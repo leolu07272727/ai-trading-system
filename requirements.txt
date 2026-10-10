@@ -1,0 +1,8 @@
+ib_async
+python-dotenv
+pandas
+numpy
+yfinance
+requests
+anthropic
+pyyaml

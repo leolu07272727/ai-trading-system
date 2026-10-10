@@ -1,0 +1,7 @@
+{
+  "last_updated": "2026-07-07",
+  "dram_hbm_spot_trend": "flat",
+  "hyperscaler_capex": "raising",
+  "memory_makers_capex": "ramping (HBM 擴產中)",
+  "notes": "2026-07-08 週報覆核: TrendForce 7/8——主流DDR4 1Gx8現貨+2.88%週漲($37.14)但量縮買方觀望;NAND -2.87%去庫存(複合體first crack)。有價無量→維持flat再看一週,7/15週報定去留:續漲有量→up(趕在7/20冷卻期滿前);轉跌→down。 || 2026-07-07 查證(TrendForce 7/1週報+三星Q2): 現貨轉高位盤整(sideways),僅低密度DDR4/DDR3續漲→ spot填flat(誠實記錄動能放緩;合約價仍漲、Q3/Q4預測續漲,現貨重拾漲勢即改回up)。三星Q2獲利$58B破紀錄但sell-the-news,記憶體股-6~-9%;Burry公開放空MU。capex維持raising:無任何hyperscaler實際下修,7月底MSFT/GOOGL/META/AMZN財報是檢驗點。 || 2026-07-02 查證(TrendForce+財報指引): 2Q26 傳統DRAM合約價預估再漲58-63% QoQ,現貨全線歷史高位(DDR4 $2.10/Gb > HBM3e $1.70)。⚠細節:海力士HBM合約價2026走軟、HBM獲利性已低於DDR5 RDIMM——漲勢主力是傳統DRAM不是HBM,盯這個結構變化。Capex: 四大hyperscaler 2026合計$725B(+77% YoY),Meta剛上修至$125-145B。手動填規則: 現貨價看TrendForce/DRAMeXchange;capex看MSFT/GOOGL/AMZN/META指引;三雄capex看法說。值=up/flat/down/raising/cutting。現貨價『翻down』是頂部訊號,優先於估計動能。"
+}

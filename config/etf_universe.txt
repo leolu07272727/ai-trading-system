@@ -1,0 +1,65 @@
+# Extra tradable universe — leveraged ETFs merged into the morning gap scan.
+#
+# These are NOT in the S&P 500, so morning_prefilter would never find them on
+# its own. Listing one here means it gets scanned for gap-ups every cycle just
+# like an S&P 500 name; it still has to clear the same gates + AI judge to be
+# bought, and (sector = "Unknown") it shares the per-sector position cap.
+#
+# Format: `SYMBOL LEVERAGE` per line (leverage defaults to 1 if omitted).
+# The gap threshold is scaled by leverage — a 2x ETF must gap 2x the configured
+# % so its UNDERLYING moved as much as a qualifying stock — and the watchlist is
+# ranked by the leverage-ADJUSTED gap, so these can't crowd out single names.
+# Blank lines and lines starting with '#' ignored; trailing '#' comments too.
+# All tickers below were verified tradable via Finnhub on 2026-06-25.
+#
+# Inverse/bear ETFs removed 2026-07: buying SOXS/SQQQ etc. is a leveraged SHORT
+# on the underlying — it contradicts a long-momentum strategy gated by an
+# SPY-above-SMA200 regime filter, and polluted the watchlist on every red day.
+
+# --- single-stock 2x long ---
+SNXX 2   # 2x SanDisk
+SNDU 2   # 2x SanDisk (alt issuer)
+MUU 2    # 2x Micron
+NVDL 2   # 2x NVIDIA
+NVDU 2   # 2x NVIDIA (alt issuer)
+AMDL 2   # 2x AMD
+AMUU 2   # 2x AMD (alt issuer)
+TSLL 2   # 2x Tesla
+TSLR 2   # 2x Tesla (alt issuer)
+TSLT 2   # 2x Tesla (alt issuer)
+AAPU 2   # 2x Apple
+AAPB 2   # 2x Apple (alt issuer)
+MSFU 2   # 2x Microsoft
+AMZU 2   # 2x Amazon
+GGLL 2   # 2x Alphabet
+METU 2   # 2x Meta
+AVGG 2   # 2x Broadcom
+AVL 2    # 2x Broadcom (alt issuer)
+SMCL 2   # 2x Super Micro
+SMCX 2   # 2x Super Micro (alt issuer)
+CONL 2   # 2x Coinbase
+PLTU 2   # 2x Palantir
+MSTX 2   # 2x MicroStrategy
+BABX 2   # 2x Alibaba
+COWG 2   # 2x single-stock (verify underlying before relying on it)
+
+# --- classic liquid leveraged index / sector (great for intraday momentum) ---
+TQQQ 3   # 3x Nasdaq-100
+SOXL 3   # 3x Semiconductors
+SPXL 3   # 3x S&P 500
+UPRO 3   # 3x S&P 500 (alt issuer)
+TNA 3    # 3x Small-Cap (Russell 2000)
+FNGU 3   # 3x FANG+
+BULZ 3   # 3x Big-Tech
+FAS 3    # 3x Financials
+LABU 3   # 3x Biotech
+TECL 3   # 3x Technology
+WEBL 3   # 3x Internet
+USD 2    # 2x Semiconductors
+RETL 3   # 3x Retail
+DPST 3   # 3x Regional Banks
+UDOW 3   # 3x Dow 30
+MIDU 3   # 3x Mid-Cap
+
+# Note: MSTU (2x MSTR) and AMDD (2x short AMD) omitted — trade < $3 min_price,
+# would never clear the filter. SDKL / SNXD omitted — no Finnhub quote.

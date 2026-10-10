@@ -1,0 +1,12 @@
+{
+  "start_date": "2026-07-02",
+  "cash": 100000.0,
+  "positions": {},
+  "cooldowns": {},
+  "spy_start_price": 745.760009765625,
+  "last_prices": {
+    "MU": 1032.28,
+    "WDC": 598.37,
+    "STX": 915.19
+  }
+}
